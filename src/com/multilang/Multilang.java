@@ -15,12 +15,12 @@ import org.json.*;
 public class Multilang{
 	
 	/**
-	 * language, seçilen dil dosyasý
+	 * language, seÃ§ilen dil dosyasÃ½
 	 */
     private String language = "tr";
     
     /**
-     * Dil dosyalarýnýn dizini
+     * Dil dosyalarÃ½nÃ½n dizini
      */
     private String directory = "languages/";
 
@@ -57,7 +57,7 @@ public class Multilang{
     }
 
     /**
-     * Dil Dosyasý Kontrolü
+     * Dil DosyasÃ½ KontrolÃ¼
      * @param fileLang
      * @return
      */
@@ -102,30 +102,29 @@ public class Multilang{
         for (File fileEntry : folder.listFiles())
         {
         	if (!fileEntry.isDirectory() && fileEntry.getName().contains(".json"))
-            {
-            	String[] exploded = fileEntry.getName().split(".json");
-                System.out.println(exploded[0]);
-            }
+            	{
+	            	String[] exploded = fileEntry.getName().split(".json");
+	                System.out.println(exploded[0]);
+	            }
         }
     }
     
     /**
-     * Çaðýrmak istediðiniz String
+     * Ã‡aÃ°Ã½rmak istediÃ°iniz String
      * @param call
      * @return void
      */
     public String call(String call) {
     	String contents;
     	String called;
-		try {
-			contents = new String(Files.readAllBytes(Paths.get(this.directory + this.language + ".json")));
-			JSONObject o = new JSONObject(contents);
-	    	called = o.getString(call);
-	    	
-		} catch (IOException e) {
-			e.printStackTrace();
-			called = "ERROR!";
-		}
+	try {
+		contents = new String(Files.readAllBytes(Paths.get(this.directory + this.language + ".json")));
+		JSONObject o = new JSONObject(contents);
+	   	called = o.getString(call);    	
+	} catch (IOException e) {
+		e.printStackTrace();
+		called = "ERROR!";
+	}
     	return called;
     }
   
